@@ -120,6 +120,10 @@ h2 {
     z-index: 0;
 }
 
+.record, .record-player {
+    pointer-events: none;
+}
+
 /* -- Nav -------------------------- */
 nav {
     display: flex;
@@ -171,14 +175,16 @@ h1 {
     bottom: -80%;
     width: 90%;
     height: auto;
+    animation: spin 12s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 .hidden-on-desktop {
     display: none;
-}
-
-.nav-btn {
-    background-color: white;
 }
 
 .shopping-bag {
@@ -214,6 +220,22 @@ button {
     font-size: var(--size-bodytext);
 }
 
+.nav-btn {
+    background-color: white;
+}
+
+.gradient-btn:hover {
+    background: linear-gradient(-45deg, #EACB8F, #9DD6CC, #BFC6A7, #A69586, #EACB8F, #9DD6CC, #BFC6A7, #A69586);
+    background-size: 800%;
+    animation: gradient 8s linear infinite;
+}
+     
+ @keyframes gradient {
+   0% { background-position: 0% 50%; }
+   50% { background-position: 100% 50%; }
+   100% { background-position: 0% 50%; }
+ }
+
 button a {
     color: black;
 }
@@ -234,10 +256,12 @@ button a {
   z-index: 35;
   background-image: url('images/Modal_Background.png');
   background-size: cover;
-  height: 500px;
-  max-height: 80%;
+  width: 500px;
+  max-width: 80%;
   color: black;
   aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
 }
 
 .modal.active {
@@ -269,6 +293,17 @@ button a {
     color: white;
 }
 
+.modal-content {
+  text-align: right;
+}
+
+.modal-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+}
+
 .close-button {
   cursor: pointer;
   border: none;
@@ -277,6 +312,9 @@ button a {
   font-size: 6rem;
   font-weight: var(--fontweight-light);
   color: rgb(135, 135, 135);
+  position: absolute;
+  top: 0.25rem;
+  right: 0.75rem;
 }
 
 .close-button:hover {
@@ -363,6 +401,7 @@ button a {
         line-height: var(--lineheight-h2-mobile);
         padding-top: 2rem;
     }
+
     .hamburger-menu::before,
     .hamburger-menu::after,
     .hamburger-menu input {
@@ -421,7 +460,7 @@ button a {
     width: 100vw;           
     height: 100dvh;          
     
-    translate: -100%;        
+    translate: -150%;        
     transition: translate var(--animation-timing);
 
     display: flex;
@@ -451,6 +490,20 @@ button a {
     .record-player {
         width: 22%;
     }
+
+    .title-top {
+        font-size: 2.8rem;
+    }
+
+    .title-bottom {
+        font-size: 3.4rem;
+    }
+
+    #modal-record {
+        top: 8%;
+        left: 20%;
+        max-width: 70%;
+    }
 }
 
 @media (max-width:700px) {
@@ -464,6 +517,11 @@ button a {
     .record-player {
         width: 25%;
     }
+
+    #modal-record {
+        top: 9%;
+        left: 17%;
+    }
 }
 
 @media (max-width:600px) {
@@ -473,6 +531,11 @@ button a {
 
     .record-player {
         width: 30%;
+    }
+
+    #modal-record {
+        top: 12%;
+        left: 15%;
     }
 }
 
@@ -496,6 +559,10 @@ button a {
     .logo {
         width: 120px;
         padding-left: 2rem;
+    }
+    #modal-record {
+        top: 17%;
+        left: 15%;
     }
 }
 
